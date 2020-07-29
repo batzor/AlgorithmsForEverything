@@ -15,3 +15,7 @@ print("\n From here we can see that the given hash have the same length as CRYPT
 # NOTE: I installed using apt install john and added to rules to /etc/john/john.conf
 
 os.system("john --format=crypt hashed.txt")
+os.system("john --show hashed.txt")
+
+# the result is u$e Th3 l4$t lett3r 0f 3@ch w0rd
+# so the answer is e3trfhd
