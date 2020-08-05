@@ -60,7 +60,7 @@ with open("pub_key.pem") as f:
     key = RSA.import_key(f.read())
     N = key.n
     e = key.e
-    p = pr_factor(N)
+    p = new_factor(N)
     q = N // p
 
     print(p, q)
