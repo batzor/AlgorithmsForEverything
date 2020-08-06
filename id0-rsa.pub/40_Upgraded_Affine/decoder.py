@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ,."
+# you can check solution of 08_Ps_and_Qs for an algorithm of modular inverse
+
+alphabet = "abcdefghijklmnopqrstuvwxyz ,."
 
 def inverse_mod(k, p):
     """Returns the inverse of k modulo p.
@@ -32,39 +34,41 @@ def inverse_mod(k, p):
 
     return x % p
 
-def decode(txt, a, b):
+def decode(txt, a, b, iv):
     result = []
-    for i in range(0, len(txt), 2):
-        index = alphabet.find(txt[i]) * 29 + alphabet.find(txt[i + 1])
+    for letter in txt:
+        index = alphabet.find(letter)
+        offset = alphabet.find(iv)
 
         # ignore other characters
-        if(index < 0):
+        if(index == -1):
             continue
-        new_index = inverse_mod(a, 841) * (index - b) % 841
-        result.append(alphabet[new_index // 29])
-        result.append(alphabet[new_index % 29])
+        new_index = (inverse_mod(a, 29) * (index - b) - offset) % 29
+
+        result.append(alphabet[new_index])
+        iv = letter
 
     return "".join(result)
 
+#brute force
 count_max = 0
 best_guess = (0, 0)
 best_result = ""
 with open("ciphertext.txt", 'r') as f:
-    txt = f.read().strip()
-    for a in range(1, 841):
-        if(a % 29 == 0):
-            continue
-        for b in range(841):
-            decoded_txt = decode(txt, a, b)
+    txt = f.read()
+    for a in range(1, 29):
+        for b in range(29):
+            decoded_txt = decode(txt, a, b, 'e')
             # THE is the most common trigram in English text
-            if 0 < decoded_txt.count("THE ") and 0 < decoded_txt.count(". ") and 0 < decoded_txt.count(" OR "):
+            if count_max < decoded_txt.count("the"):
+                count_max = decoded_txt.count("the")
+                best_guess = (a, b)
                 best_result = decoded_txt
-                print(decoded_txt)
-                a = 841
-                break
+                print(best_result)
 
-    from hashlib import md5
-    print("Answer is", md5(best_result.encode()).hexdigest())
+
+    print("\nOur best guess of key is a={} b={}".format(best_guess[0], best_guess[1]))
+    print(best_result)
 
 
 
