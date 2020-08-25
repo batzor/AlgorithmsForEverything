@@ -1,0 +1,5 @@
+factordb-pycli
+gmpy
+pycryptodome
+requests
+pwntools
