@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long
-#define ld long double
-#define ar array
 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -11,6 +8,7 @@ using namespace __gnu_pbds;
 
 template <typename T> using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
+#define ar array
 #define vt vector
 #define pb push_back
 #define all(c) (c).begin(), (c).end()
@@ -25,6 +23,11 @@ template <typename T> using oset = tree<T, null_type, less<T>, rb_tree_tag, tree
 #define F_ORC(...) GET5(__VA_ARGS__, F_OR4, F_OR3, F_OR2, F_OR1)
 #define FOR(...) F_ORC(__VA_ARGS__)(__VA_ARGS__)
 #define EACH(x, a) for (auto& x: a)
+
+typedef long long ll;
+typedef long double ld;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
 
 template<class T> bool umin(T& a, const T& b) {
     return b<a?a=b, 1:0;
