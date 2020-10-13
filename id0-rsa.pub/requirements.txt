@@ -1,4 +1,0 @@
-factordb-pycli
-gmpy
-pycryptodome
-requests
