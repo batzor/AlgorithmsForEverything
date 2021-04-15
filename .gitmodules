@@ -1,0 +1,3 @@
+[submodule "cryptohack.org"]
+	path = cryptohack.org
+	url = git@github.com:batzor/cryptohack.org.git
