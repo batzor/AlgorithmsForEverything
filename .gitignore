@@ -5,3 +5,8 @@ __pycache__/
 
 # Sage generated
 *.sage.py
+
+# Vim swaps
+*.swp
+*.swo
+*.swn
