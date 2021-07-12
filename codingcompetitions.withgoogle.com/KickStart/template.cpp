@@ -31,31 +31,10 @@ typedef pair<ll, ll> pll;
 
 template<class T> bool umin(T& a, const T& b) {
     return b<a?a=b, 1:0;
-
 }
 template<class T> bool umax(T& a, const T& b) { 
     return a<b?a=b, 1:0;
-
 } 
-
-ll FIRSTTRUE(function<bool(ll)> f, ll lb, ll rb) {
-    while(lb<rb) {
-        ll mb=(lb+rb)/2;
-        f(mb)?rb=mb:lb=mb+1; 
-
-    } 
-    return lb;
-
-}
-ll LASTTRUE(function<bool(ll)> f, ll lb, ll rb) {
-    while(lb<rb) {
-        ll mb=(lb+rb+1)/2;
-        f(mb)?lb=mb:rb=mb-1; 
-
-    } 
-    return lb;
-
-}
 
 template<class A> void read(vt<A>& v);
 template<class A, size_t S> void read(ar<A, S>& a);
@@ -88,31 +67,25 @@ template<class A> void read(vt<A>& x) {
 template<class A, size_t S> void read(array<A, S>& x) {
     EACH(a, x)
         read(a);
-
 }
 
 string to_string(char c) {
     return string(1, c);
-
 }
 string to_string(bool b) {
     return b?"true":"false";
-
 }
 string to_string(const char* s) {
     return string(s);
-
 }
 string to_string(string s) {
     return s;
-
 }
 string to_string(vt<bool> v) {
     string res;
     FOR(sz(v))
         res+=char('0'+v[i]);
     return res;
-
 }
 
 template<size_t S> string to_string(bitset<S> b) {
@@ -120,7 +93,6 @@ template<size_t S> string to_string(bitset<S> b) {
     FOR(S)
         res+=char('0'+b[i]);
     return res;
-
 }
 template<class T> string to_string(T v) {
     bool f=1;
@@ -133,7 +105,6 @@ template<class T> string to_string(T v) {
 
     }
     return res;
-
 }
 
 template<class A> void write(A x) {
@@ -143,30 +114,25 @@ template<class A> void write(A x) {
 template<class H, class... T> void write(const H& h, const T&... t) { 
     write(h);
     write(t...);
-
 }
 void print() {
     write("\n");
-
 }
 template<class H, class... T> void print(const H& h, const T&... t) { 
     write(h);
     if(sizeof...(t))
         write(' ');
     print(t...);
-
 }
 
 void DBG() {
     cerr << "]" << endl;
-
 }
 template<class H, class... T> void DBG(H h, T... t) {
     cerr << to_string(h);
     if(sizeof...(t))
         cerr << ", ";
     DBG(t...);
-
 }
 #ifdef _DEBUG
 #define dbg(...) cerr << "LINE(" << __LINE__ << ") -> [" << #__VA_ARGS__ << "]: [", DBG(__VA_ARGS__)
@@ -192,12 +158,10 @@ template<class T, size_t S> void offset(ll o, ar<T, S>& x) {
 mt19937 mt_rng(chrono::steady_clock::now().time_since_epoch().count());
 ll randint(ll a, ll b) {
     return uniform_int_distribution<ll>(a, b)(mt_rng);
-
 }
 
 template<class T, class U> void vti(vt<T> &v, U x, size_t n) {
     v=vt<T>(n, x);
-
 }
 template<class T, class U> void vti(vt<T> &v, U x, size_t n, size_t m...) {
     v=vt<T>(n);
