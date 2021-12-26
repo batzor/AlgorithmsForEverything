@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+  public:
+    inline ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+      if(!l1)
+        return l2;
+      if(!l2)
+        return l1;
+
+      ListNode *ptr;
+      if(l1->val <= l2->val){
+        ptr = l1;
+        l1 = l1->next;
+      }else{
+        ptr = l2;
+        l2 = l2->next;
+      }
+      ptr->next = mergeTwoLists(l1, l2);
+      return ptr;
+    }
+};
+
+void solve() {
+  Solution s;
+}
+
+int main() {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+
+  solve();
+}
